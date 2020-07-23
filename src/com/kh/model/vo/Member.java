@@ -52,6 +52,15 @@ public class Member {
 		this.hobby = hobby;
 	}
 	
+	public Member(String userId, String userPw, String email, String phone, String address) {
+		super();
+		this.userId = userId;
+		this.userPw = userPw;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+	}
+	
 	// method
 	public int getUserNo() {
 		return userNo;

@@ -1,5 +1,7 @@
 package com.kh.view;
+import java.util.ArrayList;
 import java.util.Scanner;
+
 import com.kh.controller.MemberController;
 import com.kh.model.vo.Member;
 
@@ -26,10 +28,13 @@ public class MemberMenu {
 			
 			switch(select) {
 			case 1 : insertMember(); break;
-			case 2 : break;
-			case 3 : break;
-			case 4 : break;
-			case 5 : break;
+			case 2 : mc.selectList(); break;
+			case 3 : String userId = inputMemberId();
+						mc.selectByUserId(userId);
+						break;
+			case 4 : mc.selectByUserName(inputMemberName());
+						break;
+			case 5 : updateMember(); break;
 			case 6 : break;
 			case 0 : System.out.println("♡~~Exit program~~♡"); return;
 			default : System.out.println("Wrong Number. Select Again~♡");
@@ -67,11 +72,64 @@ public class MemberMenu {
 		mc.insertMember(user);
 		
 	}
+	
+	public void updateMember() {
+		
+		Member m = new Member();
+		
+		m.setUserId(inputMemberId());
+		System.out.print("변경할 암호 : ");
+		m.setUserPw(sc.nextLine());
+		System.out.print("변경할 이메일 : ");
+		m.setEmail(sc.nextLine());
+		System.out.print("변경할 전화번호(-빼고 입력) : ");
+		m.setPhone(sc.nextLine());
+		System.out.print("변경할 주소 : ");
+		m.setAddress(sc.nextLine());
+		
+		mc.updateMember(m);
+		
+	}
+	
+	public void deleteMember() {
+		
+	}
+
+	public String inputMemberId() {
+		System.out.print("회원 아이디 입력 : ");
+		String userId = sc.nextLine();
+		return userId;
+	}
+	public String inputMemberName() {
+		System.out.print("회원 이름 입력 : ");
+		String userName = sc.nextLine();
+		return userName;
+	}
+	
 	// 서비스 요청 처리 후 사용자가 보게될 응답화면
+	// DML
 	public void displaySuccess(String message) {
 		System.out.println("서비스 요청 : " + message);
 	}
 	public void displayFail(String message) {
 		System.out.println("서비스 요청 : " + message);
 	}
+	
+	// SELECT
+	public void displayNoData(String message) {
+		System.out.println(message);
+	}
+	public void displayMemberList(ArrayList<Member> list) {
+		System.out.println("\n 조회된 데이터는 다음과 같습니다.\n");
+		for (Member a : list) {
+			System.out.println(a);
+		}
+	}
+	public void displayMemberList(Member m) {
+		System.out.println("\n 조회된 데이터는 다음과 같습니다.\n");
+		System.out.println(m);
+	}
+	
+	
+	
 }
