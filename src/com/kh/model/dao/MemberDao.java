@@ -290,12 +290,14 @@ public class MemberDao {
 	}
 	
 	// 회원 탈퇴
-	public int deleteMember() {
+	public int deleteMember(String id, String pw) {
 		
 		int result = 0;
 		Connection conn = null;
 		Statement stmt = null;
-		String sql = "DELETE FROM ~";
+		String sql = "DELETE FROM MEMBER WHERE "
+				+ "USER_ID = '" + id + "'" + " AND "
+				+ "USER_PW = '" + pw + "'";
 		
 		try {
 			

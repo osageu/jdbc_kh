@@ -71,9 +71,9 @@ public class MemberController {
 	}
 	
 	// 회원 탈퇴
-	public void deleteMember() {
+	public void deleteMember(String id, String pw) {
 		
-		int result = md.deleteMember();
+		int result = md.deleteMember(id, pw);
 		if (result > 0) {
 			new MemberMenu().displaySuccess("회원 삭제 성공");
 		} else {

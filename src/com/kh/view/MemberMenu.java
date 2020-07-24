@@ -35,7 +35,7 @@ public class MemberMenu {
 			case 4 : mc.selectByUserName(inputMemberName());
 						break;
 			case 5 : updateMember(); break;
-			case 6 : break;
+			case 6 : deleteMember(); break;
 			case 0 : System.out.println("♡~~Exit program~~♡"); return;
 			default : System.out.println("Wrong Number. Select Again~♡");
 			}
@@ -92,7 +92,11 @@ public class MemberMenu {
 	}
 	
 	public void deleteMember() {
-		
+		System.out.print("아이디를 입력하시오 : ");
+		String id = sc.nextLine();
+		System.out.print("비밀번호를 입력하시오 : ");
+		String pw = sc.nextLine();
+		mc.deleteMember(id,pw);
 	}
 
 	public String inputMemberId() {
