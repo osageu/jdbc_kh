@@ -1,10 +1,8 @@
 package com.kh.model.dao;
 import java.sql.*;
 import java.util.ArrayList;
-
-import com.kh.common.JDBCTemplate;
 import com.kh.model.vo.Member;
-
+import static com.kh.common.JDBCTemplate.*;
 public class MemberDao {
 	
 	public int insertMember(Connection conn, Member m) {
@@ -28,7 +26,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(pstmt);
+			close(pstmt);
 		}
 		return result;
 	}
@@ -60,8 +58,8 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(stmt);
+			close(rset);
+			close(stmt);
 		}
 		return list;
 	}
@@ -93,8 +91,8 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
+			close(rset);
+			close(pstmt);
 		}
 		return m;
 		
@@ -130,8 +128,8 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
+			close(rset);
+			close(pstmt);
 		}
 		return list;
 	}
@@ -154,7 +152,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(pstmt);
+			close(pstmt);
 		}
 		return result;
 	}
@@ -172,7 +170,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(conn);
+			close(conn);
 		}
 		return result;
 		
@@ -204,8 +202,8 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(stmt);
+			close(rset);
+			close(stmt);
 		}
 		return m;
 	}
